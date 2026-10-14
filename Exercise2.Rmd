@@ -1,0 +1,113 @@
+---
+title: "Exercise2"
+author: "Carmelle Jade Gulapo"
+date: "2026-09-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Part A - Arithmetic Operations
+```{r}
+# TODO: Store 17 in a variable called a, and 5 in a variable called b
+# Then print the results of: a + b, a - b, a * b, a / b
+
+a <- 17
+b <- 5
+
+print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
+```
+
+TODO: Using the same a and b, compute and print a %% b and a %/% b
+
+```{r}
+z <- a%%b
+print(z)
+
+z <- a%/%b
+print(z)
+```
+TODO: Print 2 raised to the power of 10 using the ^ operator
+
+```{r}
+print(2^10)
+
+```
+
+
+
+Question #1: Run 17 / 5, 17 %% 5, and 17 %/% 5 side by side. In your own words, explain how these three results relate to each other mathematically.
+
+```{r}
+a <- 17
+b <- 5
+
+print(a / b)
+print(a %% b)
+print(a %/% b)
+```
+Answer:They are related because all three operators are used for division. The / operator gives the exact quotient, %/% gives the whole-number part of the quotient, and %% gives the remainder from the division.
+
+Question #2: Predict the output of 10 %% 3 and 10 %/% 3 before running the code. Were you correct? If not, explain what you misunderstood.
+
+```{r}
+a <- 10
+b <- 3
+
+print(a %% b)
+print(a %/% b)
+```
+Answer: I was correct all along.
+
+
+#Part B — Basic Data Types: typeof(), class(), and mode()
+
+```{r}
+x <- 42
+y <- 42L     # the L suffix forces an integer
+z <- "42"
+w <- TRUE
+v <- 3 + 2i  # complex number    
+
+# TODO: Use typeof() to check the type of each of x, y, z, w, v
+typeof(x)
+typeof(y)
+typeof(z)
+typeof(w)
+typeof(v)
+
+# TODO: # TODO: Use class() to check the class of each of x, y, z, w, v
+class(x)
+class(y)
+class(z)
+class(w)
+class(v)
+
+# TODO: Use mode() to check the class of each of x, y, z, w, v
+mode(x)
+mode(y)
+mode(z)
+mode(w)
+mode(v)
+```
+
+Question #3): x <- 42 and y <- 42L look almost identical, but typeof(x) and typeof(y) give different answers. Explain the difference in your own words.
+
+By default, R treats regular numbers as decimals (like 42.0) just in case you need to do math with fractions later. Adding the "L" tells R that this is strictly a whole number, with no decimals allowed.
+
+
+Question #4: Is typeof() ever different from class() and from mode() for the same object? Look at your results above and explain any case where this happens.
+
+
+Yes, they can be different.
+
+For x (42), typeof() says "double" (how it's actually saved in memory), but class() and mode() say "numeric" (a broader category R uses for math). While, For y (42L): typeof() and class() say "integer", but mode() groups it broadly as "numeric". In short, typeof() is the specific memory type, class() is how R treats the object practically, and mode() is an older, broader category system.
+
+
+
+
