@@ -95,19 +95,28 @@ mode(z)
 mode(w)
 mode(v)
 ```
+Question #3: x <- 42 and y <- 42L look almost identical, but typeof(x) and typeof(y) give different answers. Explain the difference in your own words.
 
-Question #3): x <- 42 and y <- 42L look almost identical, but typeof(x) and typeof(y) give different answers. Explain the difference in your own words.
-
-By default, R treats regular numbers as decimals (like 42.0) just in case you need to do math with fractions later. Adding the "L" tells R that this is strictly a whole number, with no decimals allowed.
+Answer: By default, R treats regular numbers as decimals (like 42.0) just in case you need to do math with fractions later. Adding the "L" tells R that this is strictly a whole number, with no decimals allowed.
 
 
 Question #4: Is typeof() ever different from class() and from mode() for the same object? Look at your results above and explain any case where this happens.
 
+Answer: Yes, they can be different.For x (42), typeof() says "double" (how it's actually saved in memory), but class() and mode() say "numeric" (a broader category R uses for math). While, For y (42L): typeof() and class() say "integer", but mode() groups it broadly as "numeric". In short, typeof() is the specific memory type, class() is how R treats the object practically, and mode() is an older, broader category system.
 
-Yes, they can be different.
+#Part C — Type Conversion
 
-For x (42), typeof() says "double" (how it's actually saved in memory), but class() and mode() say "numeric" (a broader category R uses for math). While, For y (42L): typeof() and class() say "integer", but mode() groups it broadly as "numeric". In short, typeof() is the specific memory type, class() is how R treats the object practically, and mode() is an older, broader category system.
+num_string <- "123"
 
+num_value <- as.numeric(num_string)
 
+typeof(num_value)
+# [1] "double"
+
+class(num_value)
+# [1] "numeric"
+
+mode(num_value)
+# [1] "numeric"
 
 
