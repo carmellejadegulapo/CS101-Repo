@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Part A - Arithmetic Operations
+# Part A - Arithmetic Operations
 ```{r}
 # TODO: Store 17 in a variable called a, and 5 in a variable called b
 # Then print the results of: a + b, a - b, a * b, a / b
@@ -22,25 +22,20 @@ print(a-b)
 print(a*b)
 print(a/b)
 ```
-
-TODO: Using the same a and b, compute and print a %% b and a %/% b
-
 ```{r}
+# TODO: Using the same a and b, compute and print a %% b and a %/% b
 z <- a%%b
 print(z)
 
 z <- a%/%b
 print(z)
 ```
-TODO: Print 2 raised to the power of 10 using the ^ operator
-
 ```{r}
+# TODO: Print 2 raised to the power of 10 using the ^ operator
+
 print(2^10)
 
 ```
-
-
-
 Question #1: Run 17 / 5, 17 %% 5, and 17 %/% 5 side by side. In your own words, explain how these three results relate to each other mathematically.
 
 ```{r}
@@ -65,7 +60,7 @@ print(a %/% b)
 Answer: I was correct all along.
 
 
-## Part B — Basic Data Types: typeof(), class(), and mode()
+# Part B — Basic Data Types: typeof(), class(), and mode()
 
 ```{r}
 x <- 42
@@ -76,27 +71,28 @@ v <- 3 + 2i  # complex number
 
 
 ```
-# TODO: Use typeof() to check the type of each of x, y, z, w, v
+
 ```{r}
+# TODO: Use typeof() to check the type of each of x, y, z, w, v
+
 typeof(x)
 typeof(y)
 typeof(z)
 typeof(w)
 typeof(v)
 ```
-
-
-# TODO: # TODO: Use class() to check the class of each of x, y, z, w, v
 ```{r}
+# TODO: Use class() to check the class of each of x, y, z, w, v
+
 class(x)
 class(y)
 class(z)
 class(w)
 class(v)
 ```
-
-# TODO: Use mode() to check the class of each of x, y, z, w, v
 ```{r}
+# TODO: Use mode() to check the class of each of x, y, z, w, v
+
 mode(x)
 mode(y)
 mode(z)
@@ -113,30 +109,30 @@ Question #4: Is typeof() ever different from class() and from mode() for the sam
 
 Answer: Yes, they can be different.For x (42), typeof() says "double" (how it's actually saved in memory), but class() and mode() say "numeric" (a broader category R uses for math). While, For y (42L): typeof() and class() say "integer", but mode() groups it broadly as "numeric". In short, typeof() is the specific memory type, class() is how R treats the object practically, and mode() is an older, broader category system.
 
-## Part C — Type Conversion
+# Part C — Type Conversion
 
+```{r}
 # TODO: Convert num_string to a numeric value using as.numeric()
 # Then check its type with typeof(), class(), and mode()
 
-```{r}
 num_string <- "123"
 num_val <- as.numeric(num_string)
 typeof(num_val) 
 class(num_val)  
 mode(num_val)   
 ```
+```{r}
 # TODO: Convert the number 0 and the number 1 to logical using as.logical()
 # What do you get?
 
-```{r}
 bad_string <- "hello123"
 as.logical(0)
 as.logical(1)
 ```
+```{r}
 # TODO: Try converting bad_string to numeric using as.numeric()
 # Run this chunk and observe the warning message and the result
 
-```{r}
 bad_string <- "hello123"
 as.numeric(bad_string)
 ```
@@ -156,44 +152,45 @@ Question #6: as.logical(0) and as.logical(1) convert to FALSE and TRUE.
 What do you think as.logical(2) and as.logical(-1)` will produce?
 Answer: They will both produce TRUE.
 
-#TODO: Test it, then explain the rule R seems to be following.
-
 ```{r}
+# TODO: Test it, then explain the rule R seems to be following.
+
 as.logical(2)
 as.logical(-1)
 ```
 Answer: R treats the exact number 0 as FALSE. Every other number whether it is positive, negative, or a decimal is treated as TRUE.
 
-## Part D — Strings, paste(), and paste0()
-
-# TODO: Print first_name and last_name using print() and/or cat()
+# Part D — Strings, paste(), and paste0()
 
 ```{r}
+# TODO: Print first_name and last_name using print() and/or cat()
+
 first_name <- "Juan"
 last_name <- "Dela Cruz"
 
 print(first_name)
 cat(last_name)
 ```
+```{r}
 # TODO: Use paste() to combine first_name and last_name into a full name
 
-```{r}
 paste(first_name,last_name)
 ```
-# TODO: Use paste0() to do the same, and compare the two results
 ```{r}
+# TODO: Use paste0() to do the same, and compare the two results
+
 paste0(first_name, last_name)
 ```
+```{r}
 # TODO: Use paste() with the argument sep = "-" to join first_name and
 # last_name with a dash instead of a space
 
-```{r}
 paste(first_name, last_name, sep = "-")
 ```
+```{r}
 # TODO: Use paste0() to build the sentence:
 # "Juan Dela Cruz is 21 years old." by combining full_name, age, and text
 
-```{r}
 age <- 21
 full_name <- paste(first_name, last_name)
 paste0(full_name, " is ", age, " years old. ")
@@ -209,19 +206,33 @@ Did this cause an error? Explain what paste0() does internally to make this work
 
 Answer: No, it did not cause an error. Internally, paste0() automatically transforms the number 21 into the text "21" before gluing the sentence together. This is called implicit coercion—R does the as.character() conversion automatically behind the scenes for you, similar to the manual conversions you did in Part C.
 
-## Part E — Critical Thinking Challenge
+# Part E — Critical Thinking Challenge
 
+```{r}
 # TODO: Predict, then test: what is the result of "5" + 5 in R?
 # Run it and read the error message carefully.
 
-```{r}
-"5" + 5
+# "5" + 5
+# it return Error in "5" + 5 : non-numeric argument to binary operator
 ```
+```{r}
 # TODO: Now fix the code above so that "5" + 5 correctly evaluates to 10
 # using an appropriate conversion function.
 
-```{r}
 as.numeric("5") + 5
 ```
+Question #9: Some programming languages automatically convert "5" + 5 into 10 without an error. R does not.
+
+Based on what you’ve learned about R’s data types in this lab, why do you think R requires an explicit conversion instead of guessing what the programmer meant?
+
+Answer: R prefers to be strict to prevent accidents. If a language guesses what the user mean, it might guess wrong—for example, it might glue them together as text ("55") instead of doing math (10). By throwing an error, R forces you to be very clear about your intentions, which helps prevent hidden bugs when working with massive datasets.
+
+Question #10: Suppose a classmate writes a script that reads a column of “numbers” from a text file. The column looks numeric, but when they try sum() on it, R throws an error. Based on everything in this lab... write a short paragraph explaining what likely went wrong and the steps you’d take to diagnose and fix it.
+
+Answer: The column was likely imported as text (characters) rather than actual numbers, possibly because there was a stray letter, a typo, or a space hidden in the file. First, I would have them run typeof() or class() on the column to confirm it is actually a "character" type. Next, I would tell them to convert it using as.numeric(). Finally, I would warn them to watch out for the "NAs introduced by coercion" warning, which would pinpoint any bad data (like a typo) that couldn't be converted into a number, allowing them to clean it up before successfully running sum().
+
+# Conclusion
+
+Answer: R strictly categorizes data into types like numeric, integer, and character, which dictates exactly what you can and cannot do with that data. Functions like typeof() and class() are essential diagnostic tools that let you look under the hood to see how R is actually reading your variables. Mastering these concepts and knowing how to manually convert types ensures your math operations run correctly and prevents frustrating errors when analyzing large datasets.
 
 
