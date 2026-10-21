@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Part A - Arithmetic Operations
+## Part A - Arithmetic Operations
 ```{r}
 # TODO: Store 17 in a variable called a, and 5 in a variable called b
 # Then print the results of: a + b, a - b, a * b, a / b
@@ -65,7 +65,7 @@ print(a %/% b)
 Answer: I was correct all along.
 
 
-#Part B — Basic Data Types: typeof(), class(), and mode()
+## Part B — Basic Data Types: typeof(), class(), and mode()
 
 ```{r}
 x <- 42
@@ -74,27 +74,36 @@ z <- "42"
 w <- TRUE
 v <- 3 + 2i  # complex number    
 
+
+```
 # TODO: Use typeof() to check the type of each of x, y, z, w, v
+```{r}
 typeof(x)
 typeof(y)
 typeof(z)
 typeof(w)
 typeof(v)
+```
+
 
 # TODO: # TODO: Use class() to check the class of each of x, y, z, w, v
+```{r}
 class(x)
 class(y)
 class(z)
 class(w)
 class(v)
+```
 
 # TODO: Use mode() to check the class of each of x, y, z, w, v
+```{r}
 mode(x)
 mode(y)
 mode(z)
 mode(w)
 mode(v)
 ```
+
 Question #3: x <- 42 and y <- 42L look almost identical, but typeof(x) and typeof(y) give different answers. Explain the difference in your own words.
 
 Answer: By default, R treats regular numbers as decimals (like 42.0) just in case you need to do math with fractions later. Adding the "L" tells R that this is strictly a whole number, with no decimals allowed.
@@ -104,19 +113,115 @@ Question #4: Is typeof() ever different from class() and from mode() for the sam
 
 Answer: Yes, they can be different.For x (42), typeof() says "double" (how it's actually saved in memory), but class() and mode() say "numeric" (a broader category R uses for math). While, For y (42L): typeof() and class() say "integer", but mode() groups it broadly as "numeric". In short, typeof() is the specific memory type, class() is how R treats the object practically, and mode() is an older, broader category system.
 
-#Part C — Type Conversion
+## Part C — Type Conversion
 
+# TODO: Convert num_string to a numeric value using as.numeric()
+# Then check its type with typeof(), class(), and mode()
+
+```{r}
 num_string <- "123"
+num_val <- as.numeric(num_string)
+typeof(num_val) 
+class(num_val)  
+mode(num_val)   
+```
+# TODO: Convert the number 0 and the number 1 to logical using as.logical()
+# What do you get?
 
-num_value <- as.numeric(num_string)
+```{r}
+bad_string <- "hello123"
+as.logical(0)
+as.logical(1)
+```
+# TODO: Try converting bad_string to numeric using as.numeric()
+# Run this chunk and observe the warning message and the result
 
-typeof(num_value)
-# [1] "double"
+```{r}
+bad_string <- "hello123"
+as.numeric(bad_string)
+```
 
-class(num_value)
-# [1] "numeric"
+Question #5: When you ran the conversion-fail chunk, R produced NA and a warning instead of stopping with an error.
 
-mode(num_value)
-# [1] "numeric"
+Why do you think R is designed to give a warning here rather than crashing the whole script?
+
+Answer: In data analysis, we often work with massive spreadsheets that might have a few typos, like a letter accidentally typed in a column of numbers. If R crashed every time it found a typo, it would be incredibly frustrating to get any work done. Instead, it marks the bad data as "missing" (NA) and lets you keep working with the rest of the good data.
+
+What are the risks of this behavior if you don’t read your warnings?
+Answer: If we ignore the warnings, we might not realize that a large chunk of our data failed to convert properly. We could end up running calculations on incomplete or heavily flawed data without even knowing it, leading to incorrect results.
+
+
+Question #6: as.logical(0) and as.logical(1) convert to FALSE and TRUE.
+
+What do you think as.logical(2) and as.logical(-1)` will produce?
+Answer: They will both produce TRUE.
+
+#TODO: Test it, then explain the rule R seems to be following.
+
+```{r}
+as.logical(2)
+as.logical(-1)
+```
+Answer: R treats the exact number 0 as FALSE. Every other number whether it is positive, negative, or a decimal is treated as TRUE.
+
+## Part D — Strings, paste(), and paste0()
+
+# TODO: Print first_name and last_name using print() and/or cat()
+
+```{r}
+first_name <- "Juan"
+last_name <- "Dela Cruz"
+
+print(first_name)
+cat(last_name)
+```
+# TODO: Use paste() to combine first_name and last_name into a full name
+
+```{r}
+paste(first_name,last_name)
+```
+# TODO: Use paste0() to do the same, and compare the two results
+```{r}
+paste0(first_name, last_name)
+```
+# TODO: Use paste() with the argument sep = "-" to join first_name and
+# last_name with a dash instead of a space
+
+```{r}
+paste(first_name, last_name, sep = "-")
+```
+# TODO: Use paste0() to build the sentence:
+# "Juan Dela Cruz is 21 years old." by combining full_name, age, and text
+
+```{r}
+age <- 21
+full_name <- paste(first_name, last_name)
+paste0(full_name, " is ", age, " years old. ")
+```
+Question #7: paste() and paste0() produced different results for the same two strings. Explain exactly why, referencing what each function does by default.
+
+Answer: By default, paste() automatically inserts a single space between the items it joins together. On the other hand, paste0() is designed to glue items together with exactly zero spaces (no separator at all) between them.
+
+
+Question #8: In the strings-numbers chunk, you combined a character string with a numeric variable (age) using paste0() without first converting age to a string.
+
+Did this cause an error? Explain what paste0() does internally to make this work, and how it relates to the type conversions you practiced in Part C.
+
+Answer: No, it did not cause an error. Internally, paste0() automatically transforms the number 21 into the text "21" before gluing the sentence together. This is called implicit coercion—R does the as.character() conversion automatically behind the scenes for you, similar to the manual conversions you did in Part C.
+
+## Part E — Critical Thinking Challenge
+
+# TODO: Predict, then test: what is the result of "5" + 5 in R?
+# Run it and read the error message carefully.
+
+```{r}
+"5" + 5
+```
+# TODO: Now fix the code above so that "5" + 5 correctly evaluates to 10
+# using an appropriate conversion function.
+
+```{r}
+as.numeric("5") + 5
+```
 
 
