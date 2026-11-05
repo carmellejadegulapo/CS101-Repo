@@ -1,5 +1,5 @@
 ---
-title: "RExercise#2_gulapo"
+title: "R Lab: Arithmetic Operations and Basic Data Types"
 author: "Carmelle Jade Gulapo"
 date: "2026-09-30"
 output: html_document
